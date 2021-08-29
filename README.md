@@ -1,4 +1,4 @@
-# Spring Boot MySQL Base Project
+# MovieAdvisor
 
 Simple project using Docker, Gradle, Spring Boot with MySQL with simple API.
 
