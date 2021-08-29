@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="fragments/app">
+<head>
+    <title>Movie</title>
+</head>
+<body>
+<div class="container"  th:fragment="content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-sm-12 body-top">
+                <img src="img/oscar.jpg" alt="" >
+            </div>
+            <div class="col-sm-6 music-type b-left">
+                <p>New Movies</p>
+            </div>
+            <div class="col-sm-6  music-type b-right">
+                <p>Top Rated Movies</p>
+            </div>
+        </div>
+    </div>
+<div class=" main">
+    <div class="container-fluid ">
+        <div class="row">
+            <div class="col-sm-6 block-music-inactive">
+                <div class="mobile-visible">Top New Releases</div>
+                <ul class="list-group"  th:each="movie:${fiveNewMovies}">
+                    <div class="list-group-item listlist">
+                        <div class="border">
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <div class="music-inactive a-block">
+                                        <a th:href="@{/movie/{id}(id=${movie.movieId})}">
+                                        <img th:src="${movie.movieImgURL}" onclick="changeImg(this,'New','')">
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="col-md-9">
+                                    <div class="row">
+                                        <div class="col-md-11">
+                                            <div class="b-block a-block">
+                                                <div class="a-block p-right">
+                                                    <a th:href="@{/movie/{id}(id=${movie.movieId})}">
+                                                    <b id="a-name" th:text="${movie.title}"></b>
+                                                    </a>
+                                                    <p th:text="${movie.description}"></p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-1">
+                                            <div class="music-info">
+                                                <div class="a-block">
+                                                    <i class="fas fa-star" style="color: gold"></i><span style="color: red" th:text="${movie.rating}"></span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    </li>
+                </ul>
+                <a href="newmovies" style="margin: 20px">More new movies...</a>
+            </div>
+
+            <div class="col-sm-6 block-music-inactive">
+                <div class="mobile-visible">Popular</div>
+                <ul class="list-group " th:each="movie : ${fiveTopMovies}">
+                    <li class="list-group-item listlist">
+                        <div class="border">
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <div class="music-inactive a-block">
+                                        <a th:href="@{/movie/{id}(id=${movie.movieId})}">
+                                        <img th:src="${movie.movieImgURL}" onclick="changeImg(this,'Popular','')">
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="col-md-9">
+                                    <div class="row">
+                                        <div class="col-md-11">
+                                            <div class="b-block a-block">
+                                                <div class="a-block p-right">
+                                                    <a th:href="@{/movie/{id}(id=${movie.movieId})}">
+                                                    <b id="a-name" th:text="${movie.title}"></b>
+                                                    </a>
+                                                    <p th:text="${movie.description}"></p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-1">
+                                            <div class="music-info">
+                                                <div class="a-block">
+                                                    <i class="fas fa-star" style="color: gold"></i> <span style="color: red" th:text="${movie.rating}"></span></button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+                <a href="topmovies" style="margin: 20px">More top movies...</a>
+            </div>
+        </div>
+    </div>
+
+</div>
+</div>
+
+
+</body>
+</html>

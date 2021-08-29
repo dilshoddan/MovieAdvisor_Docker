@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/styles :: common_header(~{::title},~{::link},~{})">
+
+    <title>Welcome</title>
+
+    <link media="all" type="text/css" rel="stylesheet" href="https://allmovies.uz/css/bootstrap_20ff2818af.css">
+
+    <link media="all" type="text/css" rel="stylesheet" href="https://allmovies.uz/css/ie10-viewport-bug-workaround.css">
+
+    <link media="all" type="text/css" rel="stylesheet" href="https://allmovies.uz/colorbox/colorbox.css">
+
+    <link media="all" type="text/css" rel="stylesheet" href="https://allmovies.uz/css/style_0c50947b52.css">
+
+    <style>
+        .container{
+            min-height: 1000px;
+        }
+    </style>
+
+</head>
+<body>
+<div th:replace="fragments/header :: header">Header</div>
+<div class="container">
+    <h1 class="page-header">About us</h1>
+    <h3>Project Team</h3>
+    <ul>
+        <li>Dilshod Abdullaev</li>
+        <li>Carl Michael</li>
+        <li>Emmanuel Azinga</li>
+    </ul>
+
+    <h3>Introduction:</h3>
+    <p>
+        One of the favorite entertainments online is watching movies. But today there are millions of movies to watch. So how to pick the one that you will definitely like? How to search such movies easily on the internet? Of course, there are online systems like IMDb that have a huge database of movies with their reviews and ratings. These systems will also provide with easy search catalogs and filters. But don't forget that all people have its own taste and preferences. The movie I liked may seem to you boring and not interesting. Moreover, every country have its own customs and traditions so some movies may conflict with someones morals and be way off their mentalitet. I personally many times disappointed with the movies nominated or won Oscars. And also you may see some movies are rated very high and has community appreciation, even if it was not even nominated to Oscar or other movie academies. So what goals should we achieve with “Movie Rating System”? They are listed below and may be added later on system requirements change:
+    </p>
+    <ol style="margin-left: 25px;">
+        <li>Creating movie database with full descriptions, its actors, poster and other many infos.</li>
+        <li>Providing many catalogs of movies by some criteria.</li>
+        <li>Search engine through movie database and filtering.</li>
+        <li>Movie ratings and comments.</li>
+        <li>Recommendations based on your watchlist.</li>
+        <li>Rest API for other third-part web-services and systems.</li>
+    </ol>
+
+
+
+</div>
+<div th:replace="fragments/footer :: footer">Footer</div>
+
+</body>
+<!-- Scripts -->
+</html>

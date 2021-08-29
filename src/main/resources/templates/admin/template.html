@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:fragment="common_header(title,links)">
+    <title th:replace="${title}">The awesome application</title>
+    <!-- Common styles and scripts -->
+    <link media="all" type="text/css" rel="stylesheet" href="https://allmovies.uz/css/bootstrap_20ff2818af.css">
+    <link media="all" type="text/css" rel="stylesheet" href="https://allmovies.uz/css/ie10-viewport-bug-workaround.css">
+    <link media="all" type="text/css" rel="stylesheet" href="https://allmovies.uz/colorbox/colorbox.css">
+    <link media="all" type="text/css" rel="stylesheet" href="https://allmovies.uz/css/style_0c50947b52.css">
+    <link th:href="@{/css/fontawesome/font-awesome.min.css}" rel="stylesheet">
+    <link th:href="@{/css/fontawesome/font-awesome.css}" rel="stylesheet">
+    <link th:href="@{/css/css/bootstrap-grid.css}" rel="stylesheet">
+    <link th:href="@{/css/css/bootstrap.css}" rel="stylesheet">
+    <link th:href="@{/css/css/bootstrap-grid.min.css}" rel="stylesheet">
+    <link th:href="@{/css/css/bootstrap.min.css}" rel="stylesheet">
+    <link th:href="@{/css/bootstrap-grid/bootstrap-grid.css}" rel="stylesheet">
+    <link th:href="@{/css/style.css}" rel="stylesheet">
+    <link th:href="@{/css/media.css}" rel="stylesheet">
+    <link th:href="@{/css/fontawesome-free-5.0.12/web-fonts-with-css/css/fontawesome-all.css}" rel="stylesheet">
+    <link th:href="@{/css/fontawesome-free-5.0.12/web-fonts-with-css/css/fontawesome-all.css}" rel="stylesheet">
+    <link th:href="@{/css/fontawesome-free-5.0.12/web-fonts-with-css/css/fontawesome.css}" rel="stylesheet">
+    <link th:href="@{/css/fontawesome-free-5.0.12/web-fonts-with-css/css/fontawesome-min.css}" rel="stylesheet">
+    <!--/* Per-page placeholder for additional links */-->
+    <th:block th:replace="${links}" />
+
+</head>
+<body>
+<div th:fragment="header">
+    <div class="inner_header" style="background-color: black">
+        <div class="logo">
+            <a th:href="@{/}"> <img th:src="@{/img/logo.jpg}" alt="logo"></a>
+        </div>
+        <div class="navbar_block">
+            <div class="navbar_ul">
+                <ul id="ul">
+                    <li><a th:href="@{/admin}" class="ul_a">Dashboard</a></li>
+                    <li><a th:href="@{/admin/addMovie}" class="ul_a">Add movie</a></li>
+                    <li><a th:href="@{/admin/addMovies}" class="ul_a">Add Movies</a></li>
+                    <li><a th:href="@{/logout}" id="ul_a">Logout</a></li>
+                </ul>
+            </div>
+            </div>
+        </div>
+    </div>
+
+
+<div th:fragment="footer">
+    <div class="copyright">
+        <i class="fa fa-copyright">  2021  Movie Advisor </i>
+    </div>
+</div>
+
+</body>
+</html>

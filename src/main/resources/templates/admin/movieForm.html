@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="admin/template :: common_header(~{::title},~{})">
+    <title>Dashboard</title>
+</head>
+<body>
+<div th:replace="admin/template :: header">Header</div>
+<div class="form-group container bg-light">
+    <form method="post">
+        <label for="data">Write in JSON format and Submit</label>
+        <textarea name="data" id="data" class="form-control" style="font-size: large" rows="20" th:text="${data}"></textarea>
+        <button class="btn btn-success" style="font-size: large" type="submit">Submit</button>
+    </form>
+</div>
+
+<div th:replace="admin/template :: footer">Footer</div>
+
+</body>
+</html>

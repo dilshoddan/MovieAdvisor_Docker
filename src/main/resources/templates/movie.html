@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/styles :: common_header(~{::title},~{::style}, ~{script})">
+    <title th:text="${movie.title}"></title>
+
+    <style>
+        
+        * {
+            overflow: hidden;
+        }
+        .rate {
+            background: #093;
+            width: 40px;
+            height: 40px;
+            line-height: 40px;
+            border-radius: 3px;
+            float: left;
+            margin: 0 10px 20px 0;
+            color: #fff;
+            font-size: 18px;
+            font-weight: 600;
+            text-align: center;
+        }
+        .name {
+            font-size: 14px;
+            font-weight: 700;
+            color: #093;
+            line-height: 14px;
+            margin-top: 6px;
+        }
+        .count {
+            font-size: 10px;
+        }
+        .fa-star {
+            color: black;
+        }
+        a.fa-star:hover {
+            color: yellow;
+        }
+        .yellow {
+            color: yellow;
+        }
+
+        </style>
+</head>
+<body>
+<div th:replace="fragments/header :: header">Header</div>
+
+<div style="min-height: 600px;" class="container bg-light">
+    <div>
+    <h1 class="pt-3">Movie Details</h1>
+        <table class="table">
+            <tr>
+            <td> <img style="width: 150px;" th:src="${movie.movieImgURL}" th:alt="${movie.title}">
+                <div class="mt-1">
+                    <div>
+                        <div class="rate"
+                             th:text="${movie.rating}"></div>
+                        <div class="name">Rating</div>
+                        <div class="count" th:text="${movie.getNoVotes()}"></div>
+                    </div>
+                    <div>
+                        <div class="rate" th:text="${movie.imdbRate}"></div>
+                        <div class="name">IMDb</div>
+                        <div class="count" th:text="${movie.imdbCount}"></div>
+                    </div>
+                </div>
+
+            </td>
+            <td style="padding-left: 20px;">
+                <div style="color: #721c24" >
+                <span th:text="${movie.getGenresString()}"></span></div>
+                <h1 class="" th:text="${movie.title}"></h1>
+                <div class="mb-2" th:text="${movie.description}"></div>
+
+                <table>
+                    <tr>
+                        <th>Stars:</th>
+                        <td th:text="${movie.getStarsString()}"></td>
+                    </tr>
+                    <tr th:if="${username != null}">
+                        <th>Rate this movie:</th>
+                        <td><a href="?rate=1" class="fa fa-star" th:classappend="${rate>=1}?yellow"></a>
+                            <a href="?rate=2" class="fa fa-star" th:classappend="${rate>=2}?yellow"></a>
+                            <a href="?rate=3" class="fa fa-star" th:classappend="${rate>=3}?yellow"></a>
+                            <a href="?rate=4" class="fa fa-star" th:classappend="${rate>=4}?yellow"></a>
+                            <a href="?rate=5" class="fa fa-star" th:classappend="${rate>=5}?yellow"></a>
+                            <a href="?rate=6" class="fa fa-star" th:classappend="${rate>=6}?yellow"></a>
+                            <a href="?rate=7" class="fa fa-star" th:classappend="${rate>=7}?yellow"></a>
+                            <a href="?rate=8" class="fa fa-star" th:classappend="${rate>=8}?yellow"></a>
+                            <a href="?rate=9" class="fa fa-star" th:classappend="${rate>=9}?yellow"></a>
+                            <a href="?rate=10" class="fa fa-star" th:classappend="${rate>=10}?yellow"></a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                        <p th:text="${username != null} ? 'Add comment'"></p>
+                        </th>
+                        <td>
+                            <form method="post" th:if="${username != null}" th:object="${comment}">
+                                <input type="hidden" name="vote" th:value="${comment.vote}">
+                                <input type="textarea" cols="10" name="comment" th:value="${comment.comment}" />
+                                <input type="submit" value="Post review">
+                            </form>
+                        </td>
+                    </tr>
+                    </tbody></table></td>
+
+            </tr>
+        </table>
+        <p th:text="${reviews.size() > 0} ? 'Comments..'"></p>
+        <table class="table">
+            <tr th:each="review : ${reviews}">
+                <th th:text="${review.user.username}"></th>
+                <td th:text="${review.comment}"></td>
+            </tr>
+        </table>
+
+    </div>
+</div>
+<div th:replace="fragments/footer :: footer">Footer</div>
+</body>
+</html>

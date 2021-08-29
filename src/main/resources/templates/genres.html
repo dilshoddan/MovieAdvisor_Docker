@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/styles :: common_header(~{::title},~{::link}, ~{::~script})">
+    <title>MovieList</title>
+    <link media="all" type="text/css" rel="stylesheet" href="https://allmovies.uz/css/bootstrap_20ff2818af.css">
+
+    <link media="all" type="text/css" rel="stylesheet" href="https://allmovies.uz/css/ie10-viewport-bug-workaround.css">
+
+    <link media="all" type="text/css" rel="stylesheet" href="https://allmovies.uz/colorbox/colorbox.css">
+
+    <link media="all" type="text/css" rel="stylesheet" href="https://allmovies.uz/css/style_0c50947b52.css">
+
+    <script src="https://allmovies.uz/js/core-js.min_99a716bb58.js"></script>
+
+
+    <!--[if lt IE 9]>
+    <script src="https://allmovies.uz/js/html5shiv.min_d1759dea59.js"></script>
+
+    <script src="https://allmovies.uz/js/respond.min_afc1984a3d.js"></script>
+
+    <![endif]-->
+
+    <script src="https://allmovies.uz/js/raven.min_daf037c2ff.js"></script>
+
+    <script src="https://allmovies.uz/js/ie10-viewport-bug-workaround.js"></script>
+
+    <script src="https://allmovies.uz/js/jquery.min_2f6b11a7e9.js"></script>
+
+    <script src="https://allmovies.uz/js/jquery.cookie_d5528dde00.js"></script>
+
+    <script src="https://allmovies.uz/js/js.cookie_8ff1c89f24.js"></script>
+
+    <script src="https://allmovies.uz/js/underscore-min_66e46fdc84.js"></script>
+
+    <script src="https://allmovies.uz/js/bootstrap.min_5869c96cc8.js"></script>
+
+    <script src="https://allmovies.uz/js/URI.min_21e300407d.js"></script>
+
+    <script src="https://allmovies.uz/js/URI.fragmentQuery_5574cf1aca.js"></script>
+
+    <script src="https://allmovies.uz/js/jquery.colorbox-min_663dd01c8e.js"></script>
+
+    <script src="https://allmovies.uz/js/handlebars.min_c0c800daae.js"></script>
+
+    <script src="https://allmovies.uz/js/moment.min_761502841c.js"></script>
+
+    <script src="https://allmovies.uz/js/vue.min_5283b86cbf.js"></script>
+
+    <script src="https://allmovies.uz/js/vue-resource.min_2424177957.js"></script>
+
+    <script src="https://allmovies.uz/js/imagesloaded.pkgd.min_e2c1a80b99.js"></script>
+
+    <script src="https://allmovies.uz/js/vueimagesloaded_d640a8a42b.js"></script>
+
+    <script src="https://allmovies.uz/js/app_d841ce7e74.js"></script>
+</head>
+<body>
+<div th:replace="fragments/header :: header">Header</div>
+
+<div class="container">
+    <h1 class="page-header">Genres</h1>
+    <div class="block-items block-movies">
+        <div class="menu">
+            <ul class="categories">
+
+                <li th:each="genre: ${genres}">
+                    <a th:href="@{/genres/{genre}(genre=${genre})}" th:classappend="${page.equals(genre)}?current">
+                        <span th:text="${genre}"></span>
+                    </a>
+                </li>
+
+            </ul>
+
+        </div>
+        <div class="items-container" id="movies">
+            <div class="items">
+                <div class="row" >
+                    <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2" th:each="movie: ${movies}">
+                        <div class="small-card small-card-movie">
+                            <a th:href="@{/movie/{id}(id=${movie.movieId})}" class="pic">
+                                <img th:src="${movie.movieImgURL}" th:alt="${movie.title}" class="img-responsive">
+                                <div class="flag-container" th:if="${movie.isNew()}">
+                                    <div class="flag new">NEW</div>
+                                </div>
+                            </a>  <!---->
+                            <div class="small-card-detail"><div class="genres" ><b>Genres: </b><span th:text="${movie.getGenresString()}"></span></div>
+                                <div class="ratings"><div class="rating kp"><div class="name">Rating</div> <div class="rate high" th:text="${movie.rating}"></div> <div class="count">
+                                    <span th:text="${movie.getNoVotes()}"></span>
+                                </div></div> <div class="rating imdb"><div class="name">IMDb</div> <div class="rate high" th:text="${movie.imdbRate}"></div> <div class="count">
+                                    <span th:text="${movie.imdbCount}"></span>
+                                </div></div> </div> <div class="details"><div class="detail-row"><span class="name">Stars:</span> <span class="value" th:text="${movie.getStarsString()}"></span></div></div> <div class="desc" th:text="${movie.description}"></div></div>
+                            <a style="margin-top: 30px" th:href="@{movie/{id}(id=${movie.movieId})}" th:title="${movie.title}" class="title" th:text="${movie.title}"></a>
+                        </div></div></div>
+            </div>
+        </div>
+    </div>
+    <div class="text-center">
+        <ul class="pagination">
+
+            <li class="disabled"><span>&laquo;</span></li>
+
+            <li class="active"><span>1</span></li>
+
+            <li><a href="#" rel="next">&raquo;</a></li>
+        </ul>
+
+    </div>
+</div>
+
+        </div>
+    </div>
+<div th:replace="fragments/footer :: footer">Header</div>
+
+</body>
+</html>

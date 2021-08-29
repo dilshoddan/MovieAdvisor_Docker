@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="admin/template :: common_header(~{::title},~{})">
+    <title>Dashboard</title>
+</head>
+<body>
+<div th:replace="admin/template :: header">Header</div>
+
+<div style="margin: 20px; background-color: #dddddd">
+    <table class="table table-light table-striped" width="100%">
+        <thead class="thead-dark">
+        <tr>
+            <td>ID</td>
+            <td>Title</td>
+            <td>Description</td>
+            <td>Genres</td>
+            <td>Stars</td>
+            <td>Rating</td>
+            <td>Edit</td>
+            <td>Delete</td>
+        </tr>
+        </thead>
+        <tr th:each="movie: ${movies}">
+            <td th:text="${movie.movieID}"></td>
+            <td th:text="${movie.title}"></td>
+            <td th:text="${movie.description}"></td>
+            <td th:text="${movie.getGenresString()}"></td>
+            <td th:text="${movie.getStarsString()}"></td>
+            <td th:text="${movie.rating}"></td>
+            <td><a th:href="@{admin/movie/{id}(id=${movie.movieID})}"><span class="fa fa-edit"></span></a></td>
+            <td><a onclick="return confirm('Are you sure?')" th:href="@{admin/movie/{id}/delete(id=${movie.movieID})}"><span class="fa alert-danger fa-remove"></span></a></td>
+        </tr>
+    </table>
+</div>
+
+<div th:replace="admin/template :: footer">Footer</div>
+</body>
+</html>
